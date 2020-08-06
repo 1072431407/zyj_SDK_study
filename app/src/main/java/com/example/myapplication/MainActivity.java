@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -16,8 +17,8 @@ import com.tencent.tauth.UiError;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = getClass().getSimpleName();
-    public static final String APP_ID="222222";
-    public static final String APP_AUTHORITIES="com.tencent.sample.fileprovider";
+//    public static final String APP_ID="222222";
+//    public static final String APP_AUTHORITIES="com.tencent.sample.fileprovider";
     private Button qqLogin;
     private Tencent tencent;
     private com.tencent.tauth.IUiListener iUiListener;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tencent = Tencent.createInstance(APP_ID, this, APP_AUTHORITIES);
+        tencent = Tencent.createInstance(AppConstants.APP_ID, this,AppConstants.APP_AUTHORITIES);
 
         init();
         initListener();
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         iUiListener = new IUiListener() {
             @Override
             public void onComplete(Object o) {
-                Log.e(TAG, "onComplete: " + JSONObject.toJSONString(o));
+                Log.e(TAG, "onComplete: " + o.toString());
             }
 
             @Override
