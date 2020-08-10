@@ -1,4 +1,4 @@
-package com.zyj.studyapp;
+package com.zyj.studyapp.app;
 
 import android.Manifest;
 import android.app.Activity;

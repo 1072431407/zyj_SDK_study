@@ -1,4 +1,4 @@
-package com.zyj.studyapp;
+package com.zyj.studyapp.app;
 
 public class AppConstants {
     public static final String APP_ID="1110677413";
