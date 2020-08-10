@@ -11,14 +11,19 @@ android {
             keyAlias = 'key0'
             keyPassword '983422'
         }
+        release {
+            storeFile file('release.jks')
+            storePassword '983422'
+            keyAlias = 'release'
+            keyPassword '983422'
+        }
     }
     defaultConfig {
         applicationId "com.zyj.studyapp"
         minSdkVersion 27
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
-
+        versionCode Integer.parseInt(APP_VERSION_CODE)
+        versionName APP_VERSION_NAME
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

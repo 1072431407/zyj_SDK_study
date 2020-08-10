@@ -106,7 +106,7 @@ public class MainActivity extends BaseActivity {
         };
         tencent.login(MainActivity.this, "all", listener, true);
     }
-    public void initOpenidAndToken(JSONObject jsonObject) {
+    private void initOpenidAndToken(JSONObject jsonObject) {//不执行登陆就无效
         try {
             String token = jsonObject.getString(Constants.PARAM_ACCESS_TOKEN);
             String expires = jsonObject.getString(Constants.PARAM_EXPIRES_IN);
