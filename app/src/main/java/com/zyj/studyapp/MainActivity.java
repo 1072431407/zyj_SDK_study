@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -32,8 +33,6 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Permissions.checkPermissions(this);
-
         tencent = Tencent.createInstance(AppConstants.APP_ID, MainActivity.this, AppConstants.APP_AUTHORITIES);
         Button login = findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
