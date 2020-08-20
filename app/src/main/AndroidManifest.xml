@@ -33,6 +33,8 @@
 
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
 
+        <activity android:name=".GameActivity"/>
+        <activity android:name=".app.BaseActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

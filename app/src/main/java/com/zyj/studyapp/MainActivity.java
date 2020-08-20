@@ -20,12 +20,14 @@ import com.tencent.tauth.UiError;
 import com.zyj.studyapp.app.AppConstants;
 import com.zyj.studyapp.app.BaseActivity;
 import com.zyj.studyapp.app.Permissions;
+import com.zyj.studyapp.util.onNoClickListener;
 
 import org.json.JSONObject;
 
 public class MainActivity extends BaseActivity {
     private final String TAG = MainActivity.class.getSimpleName();
     private Context context = this;
+    private MainActivity activity = this;
     private Tencent tencent;
     private IUiListener listener;
 
@@ -57,6 +59,13 @@ public class MainActivity extends BaseActivity {
             }
         });
 
+        Button startGame = findViewById(R.id.startGame);
+        startGame.setOnClickListener(new onNoClickListener(){
+            @Override
+            protected void onNoDoubleClick(View v) {
+                GameActivity.startActivity(activity);
+            }
+        });
     }
 
     private void getUserInfo() {
