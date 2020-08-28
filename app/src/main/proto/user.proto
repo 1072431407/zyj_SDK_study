@@ -4,45 +4,14 @@ option  java_package = "proto.user";
 option  java_outer_classname = "UserProto";
 option  java_multiple_files = true;
 
-message upMessageRequest {
+message UserRequest {
     string uuid = 1;
-    string school = 2;
-    string filed1 = 3;
-    string filed2 = 4;
+    string username = 2;
+    string password = 3;
+    string permissions = 4;//权限
 }
-message upMessageResponse {
-    string state = 1;
-}
-message loginRequest {
-    string username = 1;
-    string password = 2;
-    int32 power = 3;
-}
-message loginResponse {
-    string state = 1;
-    string uuid = 2;
-    int32 power = 3;
-    string school = 4;
-    string filed1 = 5;
-    string filed2 = 6;
-}
-
-message registerRequest {
-    string username = 1;
-    string password = 2;
-    int32 power = 3;
-    string school = 4;
-    string filed1 = 5;
-    string filed2 = 6;
-}
-message registerResponse {
-    string state = 1;
-}
-
-message upPasswordRequest {
-    string username = 1;
-    string password = 2;
-}
-message upPasswordResponse {
-    string state = 1;
+message Response {
+    int32 code = 1;//状态码
+    string message = 2;
+    string data = 3;
 }

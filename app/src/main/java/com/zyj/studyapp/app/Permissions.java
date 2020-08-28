@@ -9,6 +9,9 @@ import android.os.Build;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+/**
+ * 应用权限
+ */
 public class Permissions {
 
     public static void checkPermissions(Activity context){

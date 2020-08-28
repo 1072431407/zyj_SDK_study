@@ -10,6 +10,9 @@ import com.zyj.library.lang.StringUtil;
 import com.zyj.library.window.StatusBarUtil;
 import com.zyj.studyapp.R;
 
+/**
+ * Activity基类
+ */
 public class BaseActivity extends Activity {
 
     protected void ToastShort(String message){
