@@ -17,18 +17,10 @@ import com.zyj.studyapp.app.BaseActivity;
 import com.zyj.studyapp.net.HttpRequest;
 import com.zyj.studyapp.net.HttpResponse;
 
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.FormBody;
-import okhttp3.Headers;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
+import proto.base.BaseResponse;
 import proto.user.UserRequest;
+import proto.user.UserResponse;
 
 public class GameActivity extends BaseActivity {
     private static final String TAG = GameActivity.class.getSimpleName();
@@ -52,28 +44,41 @@ public class GameActivity extends BaseActivity {
         request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //客户端发送封装
                 UserRequest userRequest = UserRequest.newBuilder()
                         .setUuid("0001")
                         .setUsername("111111")
                         .setPassword("123456")
                         .setPermissions("1")
                         .build();
-                request(userRequest.toByteArray(), AppApi.test_url);
+
+                //服务端返回封装
+                UserResponse userResponse = UserResponse.newBuilder()
+                        .setNickName("zhangsan")
+                        .setSign("asdasdasd")
+                        .setAge("23")
+                        .build();
+                BaseResponse response = BaseResponse.newBuilder()
+                        .setCode(0)
+                        .setMessage("")
+                        .setData(userResponse.toByteString())
+                        .build();
+                request(response.toByteArray(), AppApi.test_url);
             }
         });
     }
     private void request(byte[] bytes,String api) {
         HttpRequest request = new HttpRequest();
-        request.post(bytes, api, new HttpResponse<UserRequest>() {
+        request.post(bytes, api, new HttpResponse<UserResponse>() {
             @Override
-            public void onSucceed(UserRequest res) {
-                Log.e(TAG,res.getUuid());
-                Log.e(TAG,res.getUsername());
-                Log.e(TAG,res.getPassword());
-                Log.e(TAG,res.getPermissions());
+            public void onSucceed(UserResponse response) {
+                Log.e(TAG,response.getNickName());
+                Log.e(TAG,response.getSign());
+                Log.e(TAG,response.getAge());
             }
+
             @Override
-            public void onFailure() {
+            public void onFailure(int code, String message) {
 
             }
         });

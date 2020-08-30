@@ -10,8 +10,8 @@ message UserRequest {
     string password = 3;
     string permissions = 4;//权限
 }
-message Response {
-    int32 code = 1;//状态码
-    string message = 2;
-    string data = 3;
+message UserResponse {
+    string nick_name = 1;
+    string sign = 2;
+    string age = 3;
 }

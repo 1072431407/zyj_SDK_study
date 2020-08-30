@@ -13,6 +13,7 @@ public class BuildMessage {
         try {
             cl = Class.forName(msgClassName);
             Method method = cl.getMethod("newBuilder");    // newBuilder 为静态变量，即使没有 message 的具体实例也可以 invoke！yes！
+            Method method1 = cl.getMethod("newBuilder");
             Object obj = method.invoke(null, new Object[]{});
             Message.Builder msgBuilder = (Message.Builder)obj;       // 得到 builder
             return buildMessage(msgBuilder, fields);

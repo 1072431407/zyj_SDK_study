@@ -27,7 +27,7 @@ public class HttpRequest {
         RequestBody body = new FormBody.Builder()
                 .add("param", new String(bytes))
                 .build();
-        Request request = new Request.Builder()
+        final Request request = new Request.Builder()
                 .url(AppConstants.URL_DEBUG+api)
                 .post(body)
                 .build();
@@ -46,6 +46,8 @@ public class HttpRequest {
                 Message message = new Message();
                 Bundle bundle = new Bundle();
                 bundle.putByteArray("bytes",response.body().bytes());
+                bundle.putInt("code",response.code());
+                bundle.putString("message",response.message());
                 message.setData(bundle);
                 message.what = 1;
                 handler.sendMessage(message);
@@ -56,16 +58,16 @@ public class HttpRequest {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
+            Bundle bundle = msg.getData();
             switch (msg.what){
                 case 1:
-                    Bundle bundle = msg.getData();
                     byte[] bytes = bundle.getByteArray("bytes");
                     response.onResponse(bytes);
                     String param = new String(bytes);
                     Log.e(TAG,param);
                     break;
                 case 2:
-                    response.onFailure();
+                    response.onFailure(bundle.getInt("code"),bundle.getString("message"));
                     break;
             }
 
