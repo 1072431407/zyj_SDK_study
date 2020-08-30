@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.zyj.library.log.Log;
+import com.zyj.studyapp.app.AppApi;
 import com.zyj.studyapp.app.AppConstants;
 import com.zyj.studyapp.app.BaseActivity;
 import com.zyj.studyapp.net.HttpRequest;
@@ -57,11 +58,11 @@ public class GameActivity extends BaseActivity {
                         .setPassword("123456")
                         .setPermissions("1")
                         .build();
-                request1(userRequest.toByteArray(),"index");
+                request(userRequest.toByteArray(), AppApi.test_url);
             }
         });
     }
-    private void request1(byte[] bytes,String api) {
+    private void request(byte[] bytes,String api) {
         HttpRequest request = new HttpRequest();
         request.post(bytes, api, new HttpResponse<UserRequest>() {
             @Override
@@ -74,31 +75,6 @@ public class GameActivity extends BaseActivity {
             @Override
             public void onFailure() {
 
-            }
-        });
-    }
-
-
-
-    private void request(byte[] bytes,String api) {
-        RequestBody body = new FormBody.Builder()
-                .add("param", new String(bytes))
-                .build();
-        Request request = new Request.Builder()
-                .url(AppConstants.URL_DEBUG+api)
-                .post(body)
-                .build();
-        OkHttpClient okHttpClient = new OkHttpClient();
-        okHttpClient.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.d(TAG, "onFailure: " + e.getMessage());
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String param = new String(response.body().bytes());
-                Log.e(TAG,param);
             }
         });
     }

@@ -24,7 +24,7 @@ import com.zyj.studyapp.util.onNoClickListener;
 import org.json.JSONObject;
 
 public class MainActivity extends BaseActivity {
-    private final String TAG = MainActivity.class.getSimpleName();
+    private String TAG = MainActivity.class.getSimpleName();
     private Context context = this;
     private MainActivity activity = this;
     private Tencent tencent;
@@ -114,6 +114,11 @@ public class MainActivity extends BaseActivity {
         };
         tencent.login(MainActivity.this, "all", listener, true);
     }
+
+    /**
+     * 登陆成功后保存状态
+     * @param jsonObject SDK返回的json数据
+     */
     private void initOpenidAndToken(JSONObject jsonObject) {//不执行登陆就无效
         try {
             String token = jsonObject.getString(Constants.PARAM_ACCESS_TOKEN);
