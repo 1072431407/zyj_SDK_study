@@ -2,6 +2,7 @@ package com.zyj.studyapp.net;
 
 import android.util.Log;
 
+import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -12,6 +13,10 @@ import java.lang.reflect.ParameterizedType;
 
 import proto.base.BaseResponse;
 
+/**
+ * okHttp返回数据类，作为内部类使用
+ * @param <T>
+ */
 public abstract class HttpResponse<T> {
     private String TAG = HttpResponse.class.getSimpleName();
 
@@ -30,15 +35,17 @@ public abstract class HttpResponse<T> {
                     Class cl = Class.forName(classNameStr);
                     Method method = cl.getMethod("newBuilder");
                     Message.Builder msgBuilder = (Message.Builder)method.invoke(null, new Object[]{});
-                    T t = (T) msgBuilder.mergeFrom(baseResponse.getData()).build();
-                    Log.e(TAG,t.toString());
+                    ByteString byteString = baseResponse.getData();
+                    
+                    T t = (T) msgBuilder.mergeFrom(byteString).build();
+                    Log.e(TAG,"onSucceed : \n" + t.toString());
                     onSucceed(t);
                 }catch (Exception e){
-                    Log.e(TAG,"onFailure" + HttpCode.ANALYSIS.toString());
+                    Log.e(TAG,"onFailure : \n" + HttpCode.ANALYSIS.toString());
                     onFailure(HttpCode.ANALYSIS.getCode(),HttpCode.ANALYSIS.getMessage());
                 }
             }else{
-                Log.e(TAG,"onFailure" + "HttpCode{" +
+                Log.e(TAG,"onFailure : \n" + "HttpCode{" +
                         "code=" + baseResponse.getCode() +
                         ", message='" + baseResponse.getMessage() + '\'' +
                         '}');
@@ -46,9 +53,16 @@ public abstract class HttpResponse<T> {
             }
 
         }catch (Exception e){
-            Log.e(TAG,"onFailure" + HttpCode.ANALYSIS.toString());
+            Log.e(TAG,"onFailure : \n" + HttpCode.ANALYSIS.toString());
             onFailure(HttpCode.ANALYSIS.getCode(),HttpCode.ANALYSIS.getMessage());
         }
+    }
+    public void onFailureLog(int code, String message) {
+        Log.e(TAG,"onFailure : \n" + "HttpCode{" +
+                "code=" + code +
+                ", message='" + message + '\'' +
+                '}');
+        onFailure(code,message);
     }
 
     public abstract void onSucceed(T res);

@@ -19,6 +19,10 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+/**
+ * okHttp请求类
+ * 2020-8-31 未加密
+ */
 public class HttpRequest {
     private final String TAG = HttpRequest.class.getSimpleName();
     private HttpResponse response;
@@ -35,14 +39,19 @@ public class HttpRequest {
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+                Log.e(TAG,"onFailure" + e.getMessage());
                 Message message = new Message();
                 message.what = 2;
+                Bundle bundle = new Bundle();
+                bundle.putInt("code",HttpCode.ERROR_404.getCode());
+                bundle.putString("message",HttpCode.ERROR_404.getMessage());
+                message.setData(bundle);
                 handler.sendMessage(message);
-                Log.d(TAG, "onFailure: " + e.getMessage());
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+                Log.e(TAG,"onResponse");
                 Message message = new Message();
                 Bundle bundle = new Bundle();
                 bundle.putByteArray("bytes",response.body().bytes());
@@ -63,11 +72,9 @@ public class HttpRequest {
                 case 1:
                     byte[] bytes = bundle.getByteArray("bytes");
                     response.onResponse(bytes);
-                    String param = new String(bytes);
-                    Log.e(TAG,param);
                     break;
                 case 2:
-                    response.onFailure(bundle.getInt("code"),bundle.getString("message"));
+                    response.onFailureLog(bundle.getInt("code"),bundle.getString("message"));
                     break;
             }
 
