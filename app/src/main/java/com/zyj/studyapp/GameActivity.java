@@ -7,12 +7,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-
-import com.google.protobuf.ByteString;
-import com.google.protobuf.InvalidProtocolBufferException;
 import com.zyj.library.log.Log;
 import com.zyj.studyapp.app.AppApi;
-import com.zyj.studyapp.app.AppConstants;
 import com.zyj.studyapp.app.BaseActivity;
 import com.zyj.studyapp.net.HttpRequest;
 import com.zyj.studyapp.net.HttpResponse;
