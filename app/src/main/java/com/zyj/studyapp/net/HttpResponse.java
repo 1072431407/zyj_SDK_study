@@ -3,9 +3,6 @@ package com.zyj.studyapp.net;
 import android.util.Log;
 
 import com.google.protobuf.ByteString;
-import com.google.protobuf.Descriptors;
-import com.google.protobuf.Descriptors.Descriptor;
-import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 
 import java.lang.reflect.Method;
