@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Message;
+import com.zyj.studyapp.net.HttpCode;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
@@ -33,10 +34,13 @@ public abstract class HttpResponse<T> {
                     Method method = cl.getMethod("newBuilder");
                     Message.Builder msgBuilder = (Message.Builder)method.invoke(null, new Object[]{});
                     ByteString byteString = baseResponse.getData();
-                    
-                    T t = (T) msgBuilder.mergeFrom(byteString).build();
-                    Log.e(TAG,"onSucceed : \n" + t.toString());
-                    onSucceed(t);
+                    if (byteString == null){
+                        onSucceed(null);
+                    }else{
+                        T t = (T) msgBuilder.mergeFrom(byteString).build();
+                        Log.e(TAG,"onSucceed : \n" + t.toString());
+                        onSucceed(t);
+                    }
                 }catch (Exception e){
                     Log.e(TAG,"onFailure : \n" + HttpCode.ANALYSIS.toString());
                     onFailure(HttpCode.ANALYSIS.getCode(),HttpCode.ANALYSIS.getMessage());

@@ -3,7 +3,8 @@ package com.zyj.studyapp.net;
 public enum  HttpCode {
     SUCCEED (0,"返回成功"),
     ANALYSIS(-101,"数据解析错误"),
-    ERROR_404 (404,"无网络")
+    ERROR_404 (404,"无网络"),
+    FAIL(1,"")//自定义字段
     ;
 
     private int code;
