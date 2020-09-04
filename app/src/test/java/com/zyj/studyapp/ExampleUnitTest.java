@@ -1,4 +1,4 @@
-package com.zyj.studyapp;
+package com.az.vschool;
 
 import org.junit.Test;
 

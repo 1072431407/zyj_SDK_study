@@ -1,4 +1,4 @@
-package com.zyj.studyapp.app;
+package com.az.vschool.app;
 
 /**
  * 应用配置类

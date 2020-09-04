@@ -1,4 +1,4 @@
-package com.zyj.studyapp.util;
+package com.az.vschool.util;
 
 import android.view.View;
 

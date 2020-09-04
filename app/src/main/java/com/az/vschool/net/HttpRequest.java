@@ -1,4 +1,4 @@
-package com.zyj.studyapp.net;
+package com.az.vschool.net;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,7 +7,7 @@ import android.os.Message;
 import androidx.annotation.NonNull;
 
 import com.zyj.library.log.Log;
-import com.zyj.studyapp.app.AppConstants;
+import com.az.vschool.app.AppConstants;
 
 import java.io.IOException;
 

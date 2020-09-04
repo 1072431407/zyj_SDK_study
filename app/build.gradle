@@ -19,7 +19,7 @@ android {
         }
     }
     defaultConfig {
-        applicationId "com.zyj.studyapp"
+        applicationId "com.az.vschool"
         minSdkVersion 27
         targetSdkVersion 30
         versionCode Integer.parseInt(APP_VERSION_CODE)

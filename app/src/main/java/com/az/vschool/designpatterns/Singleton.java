@@ -1,4 +1,4 @@
-package com.zyj.studyapp.designpatterns;
+package com.az.vschool.designpatterns;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;

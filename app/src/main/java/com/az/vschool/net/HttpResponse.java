@@ -1,10 +1,10 @@
-package com.zyj.studyapp.net;
+package com.az.vschool.net;
 
 import android.util.Log;
 
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Message;
-import com.zyj.studyapp.net.HttpCode;
+import com.az.vschool.net.HttpCode;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;

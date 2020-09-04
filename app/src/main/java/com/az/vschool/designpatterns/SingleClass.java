@@ -1,4 +1,4 @@
-package com.zyj.studyapp.designpatterns;
+package com.az.vschool.designpatterns;
 
 /**
  * 子类为单例

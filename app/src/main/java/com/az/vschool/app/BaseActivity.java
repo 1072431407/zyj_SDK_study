@@ -1,4 +1,4 @@
-package com.zyj.studyapp.app;
+package com.az.vschool.app;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 import com.zyj.library.lang.StringUtil;
 import com.zyj.library.window.StatusBarUtil;
-import com.zyj.studyapp.R;
+import com.az.vschool.R;
 
 /**
  * Activity基类

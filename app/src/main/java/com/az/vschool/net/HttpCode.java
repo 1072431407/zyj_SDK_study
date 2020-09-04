@@ -1,4 +1,4 @@
-package com.zyj.studyapp.net;
+package com.az.vschool.net;
 
 public enum  HttpCode {
     SUCCEED (0,"返回成功"),

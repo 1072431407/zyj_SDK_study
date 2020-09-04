@@ -1,4 +1,4 @@
-package com.zyj.studyapp.app;
+package com.az.vschool.app;
 
 import android.Manifest;
 import android.app.Activity;

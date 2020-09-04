@@ -1,4 +1,4 @@
-package com.zyj.studyapp;
+package com.az.vschool;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.zyj.studyapp", appContext.getPackageName());
+        assertEquals("com.az.vschool", appContext.getPackageName());
     }
 }

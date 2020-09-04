@@ -1,4 +1,4 @@
-package com.zyj.studyapp;
+package com.az.vschool;
 
 import androidx.annotation.Nullable;
 
@@ -16,10 +16,10 @@ import com.tencent.connect.common.Constants;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
-import com.zyj.studyapp.app.AppConstants;
-import com.zyj.studyapp.app.BaseActivity;
-import com.zyj.studyapp.app.Permissions;
-import com.zyj.studyapp.util.onNoClickListener;
+import com.az.vschool.app.AppConstants;
+import com.az.vschool.app.BaseActivity;
+import com.az.vschool.app.Permissions;
+import com.az.vschool.util.onNoClickListener;
 
 import org.json.JSONObject;
 
@@ -63,7 +63,7 @@ public class MainActivity extends BaseActivity {
         startGame.setOnClickListener(new onNoClickListener(){
             @Override
             protected void onNoDoubleClick(View v) {
-                GameActivity.startActivity(activity);
+
             }
         });
     }
